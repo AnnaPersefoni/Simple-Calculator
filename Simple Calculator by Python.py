@@ -175,6 +175,42 @@ def actionDiv():
     else:
         messagebox.showerror("Error", "Enter a Valid number\ne.g. 123, 0.123, .123, -0.123, 123.456")
 
+#Module sign function
+def actionMod():
+    Showtemplabel.delete(0, END);
+    Showlabel.delete(0, END)
+
+    Showtemplabel.delete(0, END);
+    Showlabel.delete(0, END)
+
+    Showtemplabel.config(fg='pink', bg='#8dad96')
+    Showtemplabel.insert(0, 'Modulo');
+    Showtemplabel.place(relx=0.5, rely=0.5, anchor='center')
+
+    ans = "0"
+
+    Showlabel.insert(0, ans);
+    Showlabel.place(relx=0.5, rely=0.6, anchor='center')
+
+    num1 = Numberentry1.get();
+    num2 = Numberentry2.get();
+    if(is_number(num1)==True and is_number(num2)==True):
+        num1 = casting(num1);
+        num2 = casting(num2);
+        ans = str(num1 % num2);
+
+        Showtemplabel.delete(0, END);
+        Showlabel.delete(0, END)
+
+        Showtemplabel.config(fg='pink', bg='#8dad96')
+        Showtemplabel.insert(0, 'Module');
+        Showtemplabel.place(relx=0.5, rely=0.5, anchor='center')
+
+        Showlabel.insert(0, ans);
+        Showlabel.place(relx=0.5, rely=0.6, anchor='center')
+    else:
+        messagebox.showerror("Error", "Enter a Valid number\ne.g. 123, 0.123, .123, -0.123, 123.456")
+
 root = Tk();
 root.title('My First Python Calculator');
 root.geometry('380x300+200+250');
@@ -188,19 +224,22 @@ Numberentry1.place(relx=0.5, rely=0.3, anchor='center')
 Numberentry2.place(relx=0.5, rely=0.4, anchor='center')
 
 plusbutton = Button(root, text="+", width = 5, command = actionPlus);
-plusbutton.place(relx=0.1, rely=0.7)
+plusbutton.place(relx=0.05, rely=0.7)
 
 minusbutton = Button(root, text="-", width = 5, command = actionMinus);
-minusbutton.place(relx=0.3, rely=0.7)
+minusbutton.place(relx=0.15, rely=0.7)
 
 mulbutton = Button(root, text="*", width = 5, command = actionMul);
-mulbutton.place(relx=0.5, rely=0.7)
+mulbutton.place(relx=0.25, rely=0.7)
 
 divbutton = Button(root, text="/", width = 5, command = actionDiv);
-divbutton.place(relx=0.7, rely=0.7)
+divbutton.place(relx=0.35, rely=0.7)
+
+modButton = Button(root, text="mod", width = 5, command = actionMod);
+modButton.place(relx=0.45, rely=0.7)
 
 authorbutton = Button(root, text='Author', width=6, command = actionauthor);
-authorbutton.place(relx = 0.5, rely=0.95, anchor='center');
+authorbutton.place(relx = 0.55, rely=0.95, anchor='center');
 
 root.resizable(False, False);
 root.mainloop();
